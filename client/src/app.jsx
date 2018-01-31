@@ -13,9 +13,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       families: data.families,    
-      selectedFamily: data.families[0]
+      selectedFamily: data.families[0],
+      currentFamilies: data.families
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   handleClick (familyId) {
@@ -24,6 +26,16 @@ class App extends React.Component {
     this.setState({selectedFamily: selected[0]});
   }
 
+  handleSearch(e) {
+    let value = e.target.value;
+    let currentFamilies = this.state.families;
+    let matchingFamilies = currentFamilies.filter(family => family.lastName === value);
+    if (matchingFamilies.length > 0) {
+      this.setState({currentFamilies: matchingFamilies}, () => console.log(this.state.families));
+    } else {
+      this.setState({currentFamilies: currentFamilies});
+    }
+  }
 
   render() {
     return (
@@ -34,9 +46,9 @@ class App extends React.Component {
             <div className="row" id="families">
               <div className="col-md-4">
                 <h1>Welcome, Admin</h1>
-                <Search />
+                <Search search={this.handleSearch} />
                 <ul className="list-group list-group-flush" id="families">
-                {this.state.families.map (family => {
+                {this.state.currentFamilies.map (family => {
                   return <Family click={this.handleClick} family={family} />
                 })}
                 </ul>

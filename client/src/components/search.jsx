@@ -12,8 +12,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text"/>
-        <button className="btn btn-outline-secondary search">Find</button>
+        <input onChange={(e) => this.props.search(e)}className="form-control" type="text"/>
       </div>
     )
   }
