@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/app.js",
-    "start": "node server/app.js"
+    "server-dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "michelle lockett",
   "license": "ISC",
@@ -18,9 +18,13 @@
     "babel-preset-react": "^6.23.0"
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.1",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "sequelize": "^4.32.2"
   }
 }

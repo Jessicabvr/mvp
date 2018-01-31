@@ -1,0 +1,47 @@
+h1 {
+ 
+  margin-bottom: 1em;
+
+}
+
+.container {
+  margin-top: 2em;
+}
+
+#families {
+  margin-top: 2em
+}
+
+.badge {
+  float: right;
+  margin-left: 10px;
+}
+
+.btn-need {
+  margin-left: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.familyDetail {
+}
+
+.familyMemberDetail {
+
+}
+
+.need {
+  text-align: left;
+  padding: 10px;
+}
+
+.search-bar {
+  margin-top: 2em
+  margin-bottom: 2em;
+
+}
+
+.search {
+  margin-left: 1em
+
+}
