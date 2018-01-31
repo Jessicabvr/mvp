@@ -4,6 +4,10 @@ h1 {
 
 }
 
+body {
+   background-color: #d3baa6;
+}
+
 .container {
   margin-top: 2em;
 }
@@ -15,15 +19,19 @@ h1 {
 .badge {
   float: right;
   margin-left: 10px;
+  background-color: #AB4E68
 }
 
 .btn-need {
   margin-left: 1em;
   margin-bottom: 1em;
   margin-top: 1em;
+  background-color: #B07156;
+  color: white;
 }
 
 .familyDetail {
+
 }
 
 .familyMemberDetail {
@@ -33,6 +41,11 @@ h1 {
 .need {
   text-align: left;
   padding: 10px;
+  background-color: #e6e3db
+}
+
+.family {
+  background-color: #e6e3db
 }
 
 .search-bar {
@@ -43,5 +56,33 @@ h1 {
 
 .search {
   margin-left: 1em
-
 }
+
+.ml-auto {
+  margin-right: 8em;
+}
+
+#mainNavbar {
+  height: 100px;
+}
+
+.bg-puce {
+  background-color: #533745;
+}
+
+.bg-beaver {
+  background-color: #9D9171;
+}
+
+.bg-brown-sugar{
+  background-color: #B07156;
+  color: white;
+}
+
+.bg-rose {
+  background-color: #AB4E68
+  color: white;
+}
+
+
+

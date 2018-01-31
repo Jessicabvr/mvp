@@ -8,11 +8,15 @@ class Need extends React.Component {
   render() {
     let claimed = this.props.need.claimed === true ? 'claimed' : 'unclaimed';
     let fulfilled = this.props.need.fulfilled === true ? 'met' : 'unmet';
+    let claimedStyle = "badge badge-dark bg-beaver";
+    let unclaimedStyle = "badge badge-dark bg-rose";
+ 
     return (
       <li className="list-group-item need">
         {this.props.need.type} 
-        <span className="badge badge-warning">{claimed}</span>
-        <span className="badge badge-warning">{fulfilled}</span>
+        <span className={this.props.need.fulfilled === true ? claimedStyle : unclaimedStyle}>{fulfilled}</span>
+        <span className={this.props.need.claimed === true ? claimedStyle : unclaimedStyle}>{claimed}</span>
+        
      </li>)
   }
 }

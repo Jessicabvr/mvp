@@ -1,7 +1,7 @@
 import React from 'react';
 
 const navbarInstance = (
- <nav className="navbar navbar-expand-lg navbar-light bg-light">
+ <nav className="navbar navbar-expand-lg navbar-dark bg-puce" id="mainNavbar">
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -10,13 +10,16 @@ const navbarInstance = (
       <li className="nav-item active">
         <a className="nav-link" href="#">Dashboard <span className="sr-only">(current)</span></a>
       </li>
+    </ul>
+    <ul className="navbar-nav ml-auto">
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Settings
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a className="dropdown-item" href="#">Register a new family</a>
           <a className="dropdown-item" href="#">Add an admin</a>
-          <a className="dropdown-item" href="#">Profile</a>
+          <a className="dropdown-item" href="#">Profile Settings</a>
         </div>
       </li>
     </ul>
