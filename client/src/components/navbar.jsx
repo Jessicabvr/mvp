@@ -1,6 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+
 
 const navbarInstance = (
+  
  <nav className="navbar navbar-expand-lg navbar-dark bg-puce" id="mainNavbar">
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
@@ -8,7 +12,7 @@ const navbarInstance = (
   <div className="collapse navbar-collapse" id="navbarNavDropdown">
     <ul className="navbar-nav">
       <li className="nav-item active">
-        <a className="nav-link" href="#">Dashboard <span className="sr-only">(current)</span></a>
+        <Link to="/" className="link nav-link navbar-brand">Dashboard </Link><span className="sr-only">(current)</span>
       </li>
     </ul>
     <ul className="navbar-nav ml-auto">
@@ -17,9 +21,8 @@ const navbarInstance = (
           Settings
         </a>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="#">Register a new family</a>
-          <a className="dropdown-item" href="#">Add an admin</a>
-          <a className="dropdown-item" href="#">Profile Settings</a>
+          <Link to="/family" className="dropdownLink dropdown-item">Register a new family</Link>
+          <Link to="/settings" className="dropdownLink dropdown-item">Add admin</Link>
         </div>
       </li>
     </ul>

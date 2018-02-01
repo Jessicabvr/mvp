@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Family from './components/family.jsx';
 import FamilyMemberList from './components/familyMemberList.jsx';
-import data from '../../database/testData.js';
+import RegisterFamily from './components/registerFamily.jsx';
 import NavbarCustom from './components/navbar.jsx';
 import Search from './components/search.jsx';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import data from '../../database/testData.js';
+
 
 
 class App extends React.Component {
@@ -31,7 +34,7 @@ class App extends React.Component {
     let currentFamilies = this.state.families;
     let matchingFamilies = currentFamilies.filter(family => family.lastName === value);
     if (matchingFamilies.length > 0) {
-      this.setState({currentFamilies: matchingFamilies}, () => console.log(this.state.families));
+      this.setState({currentFamilies: matchingFamilies});
     } else {
       this.setState({currentFamilies: currentFamilies});
     }
@@ -40,8 +43,7 @@ class App extends React.Component {
   render() {
     return (
         <div className="">
-          <NavbarCustom />
-      
+          
           <div className="container">
             <div className="row" id="families">
               <div className="col-md-4">
@@ -49,7 +51,7 @@ class App extends React.Component {
                 <Search search={this.handleSearch} />
                 <ul className="list-group list-group-flush" id="families">
                 {this.state.currentFamilies.map (family => {
-                  return <Family click={this.handleClick} family={family} />
+                  return <Family key={family.id} click={this.handleClick} family={family} />
                 })}
                 </ul>
               </div>
@@ -69,4 +71,26 @@ class App extends React.Component {
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+
+
+const Login = () => (
+  <h1>Login</h1>
+
+)
+
+const Settings = () => (
+  <h1>Shoud have navbar</h1>
+
+)
+
+ReactDOM.render(<BrowserRouter> 
+                  <div>  
+                    <NavbarCustom />             
+                    <Route exact path='/' component={App}/>  
+                    <Route path='/family' component={RegisterFamily} />   
+                    <Route path='/settings' component={Settings} />                         
+                    <Route path="/login" component={Login} />
+                  </div>
+                </BrowserRouter>          
+                , 
+                document.getElementById('app'));

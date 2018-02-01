@@ -17,7 +17,7 @@ class FamilyMemberList extends React.Component {
   render() {
     return (
       <div className="familyDetail">
-        {this.props.family.members.map(person => <FamilyMember person={person} />)}           
+        {this.props.family.members.map((person, index) => <FamilyMember key={index} person={person} />)}           
       </div>
     );
   }
