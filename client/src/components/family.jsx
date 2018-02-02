@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom'
 
 class Family extends React.Component {
   constructor(props) {
@@ -12,10 +13,12 @@ class Family extends React.Component {
 
   render() {
     return(
-      <li onClick={(e) => this.props.click(this.props.family.id)} className="list-group-item family" key={this.props.family.id}>
-        {this.props.family.lastName}
-        <span className="badge badge-pill badge-info">{this.props.family.members.length} Family Members</span>
-      </li>
+      <div>
+        <li onClick={(e) => this.props.click(this.props.family.id)} className="list-group-item family" key={this.props.family.id}>
+          {this.props.family.lastName}
+          <Link to="/" className="badge badge-pill badge-dark">{this.props.family.members.length}</Link>
+        </li>
+      </div>
     );
     
   }

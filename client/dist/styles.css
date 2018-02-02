@@ -1,19 +1,42 @@
 h1 {
- 
   margin-bottom: 1em;
-
 }
 
 body {
-   background-color: #d3baa6;
+   
+}
+
+.dropdownLink {
+  color: #533745;
+  text-decoration: 'none';
+}
+
+.link {
+  color: #FFF;
+  text-decoration: 'none';
+}
+
+.link:hover {
+  color: white;
+  text-decoration: none !important;
+}
+
+.dropdownLink:hover {
+  color: #B07156;
+  text-decoration: none !important;
 }
 
 .container {
-  margin-top: 2em;
 }
 
 #families {
-  margin-top: 2em
+  background-color: #e6e3db;
+  
+  
+}
+
+#selectedFamily {
+  margin-top: 5em;
 }
 
 .badge {
@@ -49,13 +72,14 @@ body {
 }
 
 .search-bar {
-  margin-top: 2em
-  margin-bottom: 2em;
+  margin-top: 2em;
+  padding: 20px;
 
 }
 
 .search {
   margin-left: 1em
+  margin-bottom: 3em;
 }
 
 .ml-auto {

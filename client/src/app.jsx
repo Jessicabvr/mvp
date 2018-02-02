@@ -6,7 +6,7 @@ import FamilyMemberList from './components/familyMemberList.jsx';
 import RegisterFamily from './components/registerFamily.jsx';
 import NavbarCustom from './components/navbar.jsx';
 import Search from './components/search.jsx';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 import data from '../../database/testData.js';
 
 
@@ -42,36 +42,34 @@ class App extends React.Component {
 
   render() {
     return (
-        <div className="">
-          
-          <div className="container">
-            <div className="row" id="families">
-              <div className="col-md-4">
-                <h1>Welcome, Admin</h1>
-                <Search search={this.handleSearch} />
-                <ul className="list-group list-group-flush" id="families">
+      <div id="customNavbar">
+        <NavbarCustom />
+          <div className="container row">
+            <div className="col-md-3" id="families">
+              <Search search={this.handleSearch} />
+              <Link to="/family"><button>Add a family</button></Link>
+              <ul className="list-group list-group-flush">
                 {this.state.currentFamilies.map (family => {
                   return <Family key={family.id} click={this.handleClick} family={family} />
                 })}
-                </ul>
-              </div>
+              </ul>
+            </div>
 
-              <div className="col-md-2"></div>
-
-              <div className="col-md-6">
-                 <FamilyMemberList family={this.state.selectedFamily}/>
-              </div>
-
+            <div className="col-md-1 break"></div>
+            
+            <div className="container col-md-8 content" id="selectedFamily">
+              <Route 
+                  exact path="/" 
+                  render={(props) => <FamilyMemberList {...props} family={this.state.selectedFamily} />} 
+              />
+              <Route path="/family" component={RegisterFamily}/>
+              <Route path="/settings" component={Settings}/>
             </div>
           </div>
-        </div>
-      
-    );
+        </div>       
+    )
   }
-
 }
-
-
 
 const Login = () => (
   <h1>Login</h1>
@@ -79,18 +77,8 @@ const Login = () => (
 )
 
 const Settings = () => (
-  <h1>Shoud have navbar</h1>
+  <h1>Should have navbar</h1>
 
 )
 
-ReactDOM.render(<BrowserRouter> 
-                  <div>  
-                    <NavbarCustom />             
-                    <Route exact path='/' component={App}/>  
-                    <Route path='/family' component={RegisterFamily} />   
-                    <Route path='/settings' component={Settings} />                         
-                    <Route path="/login" component={Login} />
-                  </div>
-                </BrowserRouter>          
-                , 
-                document.getElementById('app'));
+ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('app'));
