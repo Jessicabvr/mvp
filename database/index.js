@@ -1,8 +1,11 @@
+const Config = require('../config.js');
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('mvpSKC', 'root', 'chickenface', {
+const sequelize = new Sequelize('mvpSKC', 'root', Config.Config.dbConnectionPassword, {
   host: 'localhost',
   dialect: 'mysql',
 });
+
+
 const Promise = require('bluebird');
 
 sequelize
