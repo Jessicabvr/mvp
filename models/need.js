@@ -11,7 +11,9 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Need.associate = function(models) {
-    models.need.belongsToMany(models.person, { as: 'needs', through: 'PersonNeed'});
+    console.log(models);
+    // models.need.belongsToMany(models.person, { as: 'needs', through: { model: 'PersonNeeds', unique: false}});
+    models.need.hasMany(models.PersonNeed);
   };
 
   return Need;

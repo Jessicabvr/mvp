@@ -33,7 +33,6 @@ router.post('/families/:id', (req, res) => {
 
 //associate a new need to a member
 router.post('/families/:familyId/members/:memberId/needs', (req, res) => {
-  console.log(req.params.memberId, '>>>>>>>>>>>>>>>>>>>>>')
   db.dbHelpers.associateNeed(req.body.need, req.params.memberId, ((need) => res.send(need)));
 });
 

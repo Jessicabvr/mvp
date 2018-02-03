@@ -2,6 +2,12 @@
 
 module.exports = (sequelize, DataTypes) => {
   var PersonNeed = sequelize.define('PersonNeed', {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
     claimed: {
       type: DataTypes.BOOLEAN
     },
@@ -12,6 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT
     }
   });
+
+  PersonNeed.associate = function(models) {
+    models.PersonNeed.belongsTo(models.need);
+    models.PersonNeed.belongsTo(models.person);
+  }
 
   return PersonNeed;
 };

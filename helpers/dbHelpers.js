@@ -4,7 +4,17 @@ const Promise = require('bluebird');
 module.exports.dbHelpers = {
   getFamilies: (callback) => {
     models.family.findAll({
-      include: [ {model: models.person, as: 'members'} ]
+
+      include: [
+        {
+          model: models.person,
+          as: 'members',
+          include: [{
+            model: models.PersonNeed,
+            as: 'needs'
+          }]
+        }
+      ]
     })
     .then(families => {
       callback(families);
@@ -14,7 +24,17 @@ module.exports.dbHelpers = {
 
   getFamily: (id, callback) => {
     models.family.findAll({
-      include: [ {model: models.person, as: 'members'} ],
+      include: [{
+        model: models.person, 
+        as: 'members',
+        include: [{
+          model: models.PersonNeed,
+          as: 'needs',
+          include: [{
+            model: models.need
+          }]
+        }]
+      }],
       where: {
         id: id
       }
@@ -25,17 +45,20 @@ module.exports.dbHelpers = {
 
   getFamilyMember: (familyId, personId, callback) => {
     models.person.findAll({
-      include: [ {model: models.need, as: 'needs'} ],
       where: {
         id: personId
-      }
+      },
+      include: [{
+        model: models.PersonNeed,
+        as: 'needs'
+      }]
     })
     .then(person => callback(person))
     .catch(err => console.log(err));
   },
 
   addFamily: (family, callback) => {
-    models.family.create({
+    return models.family.create({
       lastName: family.lastName,
       SKC_ID: family.id
     })
@@ -51,15 +74,17 @@ module.exports.dbHelpers = {
   },
 
   addMember: (id, member, callback) => {
-    Promise.all([
-      models.person.create(member),
-      models.family.findById(id)
-    ]) 
-    .spread((member, family) => {
-      family.addMember(member);
-    }).then(family => {
-      callback(family);
+    models.person.create({
+      lastName: member.lastName,
+      firstName: member.firstName,
+      gender: member.gender,
+      familyId: id
     })
+     .then(member => {
+      console.log(member);
+      callback(member);
+    })
+    
     .catch(err => {
       console.log(err);
     });
@@ -76,9 +101,15 @@ module.exports.dbHelpers = {
       })    
     ])
     .spread((person, savedNeed) => {
-      person.addNeed(savedNeed, {through: { claimed: false, fullfilled: false, description: need.description}, as: 'needs'});
+      return models.PersonNeed.create({
+        claimed: false,
+        fulfilled: false,
+        description: need.description,
+        needId: savedNeed[0].dataValues.id,
+        personId: person.id
+      })
     })
-    .then((need) => callback(need))
+    .then((PersonNeed) => callback(PersonNeed))
     .catch(err => console.log(err));
   }
 }
