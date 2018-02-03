@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon app.js",
-    "start": "node app.js"
+    "server-dev": "nodemon bin/www",
+    "start": "node bin/www"
   },
   "author": "michelle lockett",
   "license": "ISC",
@@ -19,15 +19,19 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.0",
     "jquery": "^3.1.1",
+    "morgan": "^1.9.0",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.2.2",
-    "sequelize": "^4.32.2"
+    "sequelize": "^4.32.2",
+    "sequelize-cli": "^3.2.0"
   },
   "proxy": "http://localhost:1234"
 }

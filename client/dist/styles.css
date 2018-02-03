@@ -3,7 +3,12 @@ h1 {
 }
 
 body {
+  
    
+}
+
+select {
+  margin-right: 1em;
 }
 
 .dropdownLink {
@@ -31,8 +36,6 @@ body {
 
 #families {
   background-color: #e6e3db;
-  
-  
 }
 
 #selectedFamily {
@@ -58,7 +61,16 @@ body {
 }
 
 .familyMemberDetail {
+  margin-top: 3em;
 
+}
+
+.fullName {
+  margin-bottom: 1em;
+}
+
+.description {
+  width: 40%;
 }
 
 .need {

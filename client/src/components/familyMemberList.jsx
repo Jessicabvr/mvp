@@ -1,5 +1,6 @@
 import React from 'react';
 import FamilyMember from './familyMember.jsx';
+import AddFamilyMember from './addFamilyMember.jsx';
 
 class FamilyMemberList extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class FamilyMemberList extends React.Component {
   render() {
     return (
       <div className="familyDetail">
+        <AddFamilyMember family={this.props.family} />
         {this.props.family.members.map((person, index) => <FamilyMember key={index} person={person} />)}           
       </div>
     );

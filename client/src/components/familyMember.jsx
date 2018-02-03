@@ -1,6 +1,7 @@
 import React from 'react';
 import Need from './need.jsx';
 import NoNeed from './noNeed.jsx';
+import AddNeed from './addNeed.jsx';
 
 class FamilyMember extends React.Component {
   constructor(props) {
@@ -27,19 +28,24 @@ class FamilyMember extends React.Component {
     if (this.props.person.needs.length > 0) {
       return (
         <div className="familyMemberDetail">
-          <h4>{this.props.person.firstName + ' ' + this.props.person.lastName}  <button className="btn btn-need">Add a Need</button></h4>
+          <h4 className="fullName">{this.props.person.firstName + ' ' + this.props.person.lastName}</h4>
+
         
           <ul className="list-group">
+         
+            
             {this.state.needs.map(need => {return <Need key={need.id} need={need} />})}
+              <AddNeed person={this.props.person} />
+
           </ul>
         </div>
     )} else {
 
       return ( 
         <div className="familyMemberDetail">
-          <h3>{this.props.person.firstName + ' ' + this.props.person.lastName}  <button className="btn btn-outline-info btn-need">Add a Need</button></h3>
-        
+          <h4>{this.props.person.firstName + ' ' + this.props.person.lastName}  </h4>
           <ul className="list-group">
+            <AddNeed person={this.props.person} />
             <NoNeed />
           </ul>
         </div>
