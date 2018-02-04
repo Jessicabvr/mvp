@@ -16,22 +16,19 @@ select {
   text-decoration: 'none';
 }
 
-.link {
-  color: #FFF;
-  text-decoration: 'none';
-}
-
-.link:hover {
-  color: white;
-  text-decoration: none !important;
-}
-
 .dropdownLink:hover {
   color: #B07156;
   text-decoration: none !important;
 }
 
-.container {
+.link {
+  color: black;
+  text-decoration: 'none';
+}
+
+.link:hover {
+  color: black;
+  text-decoration: none !important;
 }
 
 #families {
@@ -42,6 +39,10 @@ select {
   margin-top: 5em;
 }
 
+#description-select, #category-select, #type-select {
+  margin-left: 2em;
+}
+
 .badge {
   float: right;
   margin-left: 10px;
@@ -49,15 +50,9 @@ select {
 }
 
 .btn-need {
-  margin-left: 1em;
-  margin-bottom: 1em;
-  margin-top: 1em;
+  margin-left: 2em;
   background-color: #B07156;
   color: white;
-}
-
-.familyDetail {
-
 }
 
 .familyMemberDetail {
@@ -74,8 +69,10 @@ select {
 }
 
 .need {
-  text-align: left;
-  padding: 10px;
+  text-align: left; 
+}
+
+.add-need {
   background-color: #e6e3db
 }
 
@@ -92,6 +89,14 @@ select {
 .search {
   margin-left: 1em
   margin-bottom: 3em;
+}
+
+.category {
+  margin-right: 1em;
+}
+
+.describe {
+  margin-left: 4em;
 }
 
 .ml-auto {
@@ -114,6 +119,7 @@ select {
   background-color: #B07156;
   color: white;
 }
+
 
 .bg-rose {
   background-color: #AB4E68

@@ -20,7 +20,6 @@ class FamilyMember extends React.Component {
     let needs = this.state.needs;
     let sorted = needs.sort((a, b) => a.claimed > b.claimed);
     this.setState({ needs: sorted });
-
   }
 
   render () {
@@ -28,15 +27,10 @@ class FamilyMember extends React.Component {
     if (this.props.person.needs.length > 0) {
       return (
         <div className="familyMemberDetail">
-          <h4 className="fullName">{this.props.person.firstName + ' ' + this.props.person.lastName}</h4>
-
-        
-          <ul className="list-group">
-         
-            
-            {this.state.needs.map(need => {return <Need key={need.id} need={need} />})}
-              <AddNeed person={this.props.person} />
-
+          <h4 className="fullName">{this.props.person.firstName + ' ' + this.props.person.lastName}</h4>       
+          <ul className="list-group">           
+            {this.props.person.needs.map(need => <Need key={need.id} need={need} />)}
+              <AddNeed update={this.props.update} person={this.props.person} />
           </ul>
         </div>
     )} else {
@@ -45,8 +39,9 @@ class FamilyMember extends React.Component {
         <div className="familyMemberDetail">
           <h4>{this.props.person.firstName + ' ' + this.props.person.lastName}  </h4>
           <ul className="list-group">
-            <AddNeed person={this.props.person} />
             <NoNeed />
+            <AddNeed update={this.props.update} person={this.props.person} />
+            
           </ul>
         </div>
 

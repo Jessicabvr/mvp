@@ -5,21 +5,13 @@ import AddFamilyMember from './addFamilyMember.jsx';
 class FamilyMemberList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hidden: true
-    }
-  }
-
-  toggleShowDetail() {
-    let current = this.state.hidden;
-    this.setState({ hidden: !current });
   }
 
   render() {
     return (
       <div className="familyDetail">
-        <AddFamilyMember family={this.props.family} />
-        {this.props.family.members.map((person, index) => <FamilyMember key={index} person={person} />)}           
+        <AddFamilyMember add={this.props.add} update={this.props.update} family={this.props.family} />
+        {this.props.family.members.map((person, index) => <FamilyMember update={this.props.update} key={index} person={person} />)}           
       </div>
     );
   }

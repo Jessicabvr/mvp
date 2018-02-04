@@ -17,6 +17,7 @@ module.exports.dbHelpers = {
       ]
     })
     .then(families => {
+
       callback(families);
     })
     .catch(err => console.log(err));
@@ -66,13 +67,6 @@ module.exports.dbHelpers = {
     .catch(err => console.log(err));
   },
 
-  addMembers: (id, members, callback) => {
-    var promises = [models.family.findById(id)];
-    members.map(member => promises.push(models.person.create(member)))
-    Promise.all(promises)
-    .then(members => console.log(members))   
-  },
-
   addMember: (id, member, callback) => {
     models.person.create({
       lastName: member.lastName,
@@ -106,7 +100,9 @@ module.exports.dbHelpers = {
         fulfilled: false,
         description: need.description,
         needId: savedNeed[0].dataValues.id,
-        personId: person.id
+        personId: person.id,
+        type: savedNeed[0].dataValues.type,
+        category: savedNeed[0].dataValues.category
       })
     })
     .then((PersonNeed) => callback(PersonNeed))

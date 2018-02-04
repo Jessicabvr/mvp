@@ -5,15 +5,15 @@ module.exports = {
     return queryInterface.bulkInsert('needs', [
       {
         category: 'physical item',
-        type: 'household item'
+        type: 'household item',
       },
       {
-        category: 'personal service',
-        type: 'with families directly'
+        category: 'physical item',
+        type: 'school item'
       },
       {
-        category: 'personal service',
-        type: 'not with families directly'
+        category: 'physical item',
+        type: 'clothing'
       },
       {
         category: 'transportation',
@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         category: 'money',
-        type: 'money'
+        type: 'donation'
       },
       {
         category: 'community support',

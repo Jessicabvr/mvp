@@ -13,12 +13,5 @@ module.exports = (sequelize, DataTypes) => {
     models.family.hasMany(models.person, {as: {singular: 'member', plural: 'members'}});
   };
 
-  Family.createFamilyWithId = family => {
-    return Family.create({
-      lastName: family.lastName,
-      SKC_ID: family.id
-    }).catch(err => console.log(err));
-  };
-
   return Family;
 }
