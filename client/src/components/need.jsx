@@ -5,10 +5,6 @@ class Need extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
-    console.log(this.props.need.description);
-  }
-
   render() {
     let claimed = this.props.need.claimed === true ? 'claimed' : 'unclaimed';
     let fulfilled = this.props.need.fulfilled === true ? 'met' : 'unmet';

@@ -5,6 +5,9 @@ var Promise = require('bluebird');
 var db = require('../helpers/dbHelpers.js');
 var router  = express.Router();
 
+router.get('/current/:id', (req, res) => {
+  res.redirect('/')
+})
 
 //return all families currently in the database
 router.get('/families', (req, res) => {

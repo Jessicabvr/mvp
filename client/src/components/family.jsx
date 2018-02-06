@@ -11,7 +11,7 @@ class Family extends React.Component {
     return(
       <div>
         <li onClick={(e) => this.props.click(this.props.family.id)} className="list-group-item family" key={this.props.family.id}>
-          <Link to="/" className="link family-link">{this.props.family.lastName}</Link>
+          <Link to={"/current/" + this.props.family.id} className="link family-link">{this.props.family.lastName}</Link>
           <span className="badge badge-pill badge-dark">{this.props.family.members.length}</span>
         </li>
       </div>

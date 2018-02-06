@@ -57,11 +57,11 @@ class AddNeed extends React.Component {
 
     this.setState({
       selectedType: text,
-    }, () => console.log(this.state));
+    });
   }
 
   setTypes(types) {
-    let options = types.map(type => <option>{type}</option>);
+    let options = types.map(type => <option key={type}>{type}</option>);
     return options
   }
 
@@ -81,13 +81,10 @@ class AddNeed extends React.Component {
         description: description || null
       }     
     })
-    //read the response object here
     .then(() => {
-      this.props.update();
-      this.forceUpdate();
-      });
-
-    
+      this.setState({selecteDescription: ''});
+      this.props.update(this.props.person.familyId, null);
+    });  
   }
 
   render() {
@@ -110,10 +107,10 @@ class AddNeed extends React.Component {
             <option>type</option>
             {this.setTypes(this.state.offeredTypes)}
           </select>
-          <hr></hr>
+          
           Description:
           <input value={this.state.selectedDescription} onChange={(e) => this.handleDescription(e)} id="description-select" className="description" name="description"></input>
-        <button onClick={(e) => this.submitNeed(e)} className="btn btn-need">Add a Need</button>
+        <button onClick={(e) => this.submitNeed(e)} className="btn btn-need">Add</button>
 
         </form>
 

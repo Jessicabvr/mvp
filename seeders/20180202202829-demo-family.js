@@ -6,47 +6,47 @@ module.exports = {
       return queryInterface.bulkInsert('families', [
       {
         lastName: 'Khan',
-        SKC_ID: 101  
+        email: 'test1@test.com'  
       },
       {
         lastName: 'Mohammed',
-        SKC_ID: 102       
+        email: 'test2@test.com'        
       },
       {
         lastName: 'Khoury',
-        SKC_ID: 103
+        email: 'test3@test.com' 
       },
       {
         lastName: 'Ali',
-        SKC_ID: 104
+        email: 'test4@test.com' 
       },
       {
         lastName: 'Ahmad',
-        SKC_ID: 105
+        email: 'test5@test.com' 
       },
       {
         lastName: 'Alaoui',
-        SKC_ID: 106
+        email: 'test6@test.com' 
       },
       {
         lastName: 'Boulos',
-        SKC_ID: 107
+        email: 'test7@test.com' 
       },
       {
         lastName: 'Harmon',
-        SKC_ID: 108
+        email: 'test8@test.com' 
       },
       {
         lastName: 'Lockett',
-        SKC_ID: 109       
+        email: 'test9@test.com'        
       },
       {
         lastName: 'Geibel',
-        SKC_ID: 110
+        email: 'test10@test.com' 
       },
       {
         lastName: 'Arroyo',
-        SKC_ID: 111
+        email: 'test11@test.com' 
       }], {});
     
   },

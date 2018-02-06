@@ -11,6 +11,10 @@ select {
   margin-right: 1em;
 }
 
+input {
+  margin-right: 1em;
+}
+
 .dropdownLink {
   color: #533745;
   text-decoration: 'none';
@@ -49,10 +53,11 @@ select {
   background-color: #AB4E68
 }
 
-.btn-need {
-  margin-left: 2em;
+.btn {
+  margin-right: 2em;
   background-color: #B07156;
   color: white;
+  float: right;
 }
 
 .familyMemberDetail {
@@ -65,7 +70,7 @@ select {
 }
 
 .description {
-  width: 40%;
+  width: 30%;
 }
 
 .need {
@@ -81,9 +86,11 @@ select {
 }
 
 .search-bar {
-  margin-top: 2em;
   padding: 20px;
+}
 
+#search-bar {
+  width: 90%;
 }
 
 .search {
@@ -105,6 +112,12 @@ select {
 
 #mainNavbar {
   height: 100px;
+}
+
+.addFamilyMember {
+  background-color: #e6e3db;
+  padding: 15px;'
+  margin-top: 2em;
 }
 
 .bg-puce {

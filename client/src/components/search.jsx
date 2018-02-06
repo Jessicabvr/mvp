@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +13,7 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search-bar form-inline">
-        <input onChange={(e) => this.props.search(e)}className="form-control" type="text"/>
+        <input id="search-bar" onChange={(e) => this.props.search(e)}className="form-control" type="text"/>
       </div>
     )
   }

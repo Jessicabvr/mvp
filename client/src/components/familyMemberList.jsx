@@ -10,8 +10,8 @@ class FamilyMemberList extends React.Component {
   render() {
     return (
       <div className="familyDetail">
-        <AddFamilyMember add={this.props.add} update={this.props.update} family={this.props.family} />
-        {this.props.family.members.map((person, index) => <FamilyMember update={this.props.update} key={index} person={person} />)}           
+          <AddFamilyMember add={this.props.handleAdd} update={this.props.update} family={this.props.family} />       
+          {this.props.family.members.map((person, index) => <FamilyMember update={this.props.update} key={index} person={person} />)}    
       </div>
     );
   }

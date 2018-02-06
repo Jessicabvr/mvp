@@ -7,7 +7,8 @@ class FamilyMember extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      needs: this.props.person.needs
+      needs: this.props.person.needs,
+      added: false
     }
     this.sortNeeds = this.sortNeeds.bind(this);
   }
@@ -30,7 +31,7 @@ class FamilyMember extends React.Component {
           <h4 className="fullName">{this.props.person.firstName + ' ' + this.props.person.lastName}</h4>       
           <ul className="list-group">           
             {this.props.person.needs.map(need => <Need key={need.id} need={need} />)}
-              <AddNeed update={this.props.update} person={this.props.person} />
+            <AddNeed update={this.props.update} person={this.props.person} />
           </ul>
         </div>
     )} else {
@@ -40,8 +41,7 @@ class FamilyMember extends React.Component {
           <h4>{this.props.person.firstName + ' ' + this.props.person.lastName}  </h4>
           <ul className="list-group">
             <NoNeed />
-            <AddNeed update={this.props.update} person={this.props.person} />
-            
+            <AddNeed update={this.props.update} person={this.props.person} />           
           </ul>
         </div>
 

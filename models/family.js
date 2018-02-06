@@ -3,10 +3,14 @@
 module.exports = (sequelize, DataTypes) => {
   var Family = sequelize.define('family', {
     lastName: DataTypes.STRING,
-    SKC_ID: {
-      type: DataTypes.INTEGER,
-      unique: true
-    }
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
+    }   
   });
 
   Family.associate = function(models) {

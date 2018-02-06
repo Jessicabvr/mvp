@@ -61,10 +61,10 @@ module.exports.dbHelpers = {
   addFamily: (family, callback) => {
     return models.family.create({
       lastName: family.lastName,
-      SKC_ID: family.id
+      email: family.email
     })
     .then(family => callback(family))
-    .catch(err => console.log(err));
+    .catch(err => callback(err));
   },
 
   addMember: (id, member, callback) => {
