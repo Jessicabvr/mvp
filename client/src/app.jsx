@@ -7,7 +7,7 @@ import RegisterFamily from './components/registerFamily.jsx';
 import NavbarCustom from './components/navbar.jsx';
 import AddFamilyMember from './components/addFamilyMember.jsx';
 import Settings from './components/settings.jsx';
-import AllNeeds from './components/allNeeds.jsx';
+import NeedsList from './components/needsList.jsx';
 import Search from './components/search.jsx';
 import { Redirect, BrowserRouter, Route, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -159,8 +159,13 @@ class App extends React.Component {
               />
 
                <Route 
-                path="/needs" 
-                render={(props) => <AllNeeds {...props} needs={this.state.needs} update ={this.getAllFamilies} />}
+                exact path="/needs" 
+                render={(props) => <NeedsList {...props} listType="all" needs={this.state.needs} update ={this.getAllFamilies} />}
+              />
+
+               <Route 
+                exact path="/needs/unmet" 
+                render={(props) => <NeedsList {...props} listType="unmet" needs={this.state.needs} update ={this.getAllFamilies} />}
               />
 
               <Route 

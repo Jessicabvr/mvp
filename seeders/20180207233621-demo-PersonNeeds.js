@@ -38,7 +38,7 @@ module.exports = {
     },
      {
       claimed: true,
-      fulfilled: false,   
+      fulfilled: true,   
       description: '4th grade backpack',
       type: 'school item',
       category: 'physical item',
@@ -57,8 +57,8 @@ module.exports = {
       personId: 1
     },
     {
-      claimed: false,
-      fulfilled: false,   
+      claimed: true,
+      fulfilled: true,   
       description: '2nd grade backpack',
       type: 'school item',
       category: 'physical item',

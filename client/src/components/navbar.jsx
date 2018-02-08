@@ -23,6 +23,7 @@ const navbarInstance = (
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link to="/register" className="dropdownLink dropdown-item">Register a new family</Link>
           <Link to="/needs" className="dropdownLink dropdown-item">View All Needs</Link>
+          <Link to="/needs/unmet" className="dropdownLink dropdown-item">View Unmet Needs</Link>
         </div>
       </li>
     </ul>

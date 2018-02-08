@@ -11,7 +11,7 @@ class NeedCategory extends React.Component {
       <div className="familyMemberDetail">
         <h4 className="fullName">Category: {this.props.category}</h4>
         <ul className="list-group category-list">
-          {this.props.needs.map(need => <Need need={need} />)}
+          {this.props.needs.map(need => <Need key={need.id} need={need} />)}
         </ul>
       </div>
 
