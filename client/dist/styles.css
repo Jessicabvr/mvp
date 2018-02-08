@@ -55,7 +55,7 @@ input {
 
 .btn {
   margin-right: 2em;
-  background-color: #B07156;
+  background-color: #AB4E68;
   color: white;
   float: right;
 }
@@ -70,7 +70,7 @@ input {
 }
 
 .description {
-  width: 30%;
+  width: 50%;
 }
 
 .need {
@@ -125,7 +125,7 @@ input {
 }
 
 .bg-beaver {
-  background-color: #9D9171;
+  background-color: #e6e3db;
 }
 
 .bg-brown-sugar{
@@ -137,6 +137,10 @@ input {
 .bg-rose {
   background-color: #AB4E68
   color: white;
+}
+
+.bg-yellow {
+  background-color: #e8971e
 }
 
 

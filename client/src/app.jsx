@@ -6,6 +6,8 @@ import FamilyMemberList from './components/familyMemberList.jsx';
 import RegisterFamily from './components/registerFamily.jsx';
 import NavbarCustom from './components/navbar.jsx';
 import AddFamilyMember from './components/addFamilyMember.jsx';
+import Settings from './components/settings.jsx';
+import AllNeeds from './components/allNeeds.jsx';
 import Search from './components/search.jsx';
 import { Redirect, BrowserRouter, Route, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -57,17 +59,21 @@ class App extends React.Component {
       families: testFamily,
       selectedFamily: testFamily[0],
       currentFamilies: testFamily,
+      needs: []
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.getAllFamilies = this.getAllFamilies.bind(this);
     this.handleAddFamily = this.handleAddFamily.bind(this);
+    this.handleAddNeed = this.handleAddNeed.bind(this);
     this.setSelectedFamily = this.setSelectedFamily.bind(this);
     this.sortFamilyMembers = this.sortFamilyMembers.bind(this);
+    this.getAllNeeds = this.getAllNeeds.bind(this);
   }
 
   componentDidMount() {
     this.getAllFamilies(null, null);
+    this.getAllNeeds();
   }
 
   handleClick (familyId) {
@@ -96,6 +102,12 @@ class App extends React.Component {
     this.getAllFamilies(selected.id, null);
   }
 
+  handleAddNeed(familyId) {
+    this.getAllFamilies(familyId, () => {
+      this.getAllNeeds();
+    });
+  }
+
   sortFamilyMembers(members) {
     return members.sort((a, b) => (a.firstName[0] > b.firstName[0]) ? 1 : ((b.firstName[0] > a.firstName[0]) ? -1: 0));
   }
@@ -111,11 +123,20 @@ class App extends React.Component {
         if (callback) { callback() }
         if (familyId) {
           this.setSelectedFamily(familyId)
-        }       
+        }
+        this.getAllNeeds(() => console.log('retrieved needs'))       
       })
       .catch(err => {
         console.log(err);
       });
+  }
+
+  getAllNeeds(callback) {
+    axios.get('http://localhost:1234/needs/all')
+         .then(needs => {
+            this.setState({needs: needs.data});
+            if(callback) { callback(); }
+         });
   }
 
   render() {
@@ -133,12 +154,27 @@ class App extends React.Component {
             <div className="container col-lg-8 content" id="selectedFamily">
 
               <Route 
-                exact path="/family" 
+                exact path="/" 
+                render={(props) => <RegisterFamily {...props} update ={this.getAllFamilies} />}
+              />
+
+               <Route 
+                path="/needs" 
+                render={(props) => <AllNeeds {...props} needs={this.state.needs} update ={this.getAllFamilies} />}
+              />
+
+              <Route 
+                  exact path="/settings" 
+                  render={(props) => <Settings {...props} update ={this.getAllFamilies} />}
+              />
+
+              <Route 
+                exact path="/register" 
                 render={(props) => <RegisterFamily {...props} update ={this.getAllFamilies} />}
               />
               <Route 
                 path="/current/:familyId" 
-                render={(props) => <FamilyMemberList {...props} handleAdd={this.handleAddFamily} update={this.getAllFamilies} family={this.state.selectedFamily} />}
+                render={(props) => <FamilyMemberList {...props} sort={this.sortFamilyMembers} addNeed={this.handleAddNeed} addFamily={this.handleAddFamily} update={this.getAllFamilies} family={this.state.selectedFamily} />}
               />             
             </div>
           </div>

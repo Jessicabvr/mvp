@@ -58,6 +58,27 @@ module.exports.dbHelpers = {
     .catch(err => console.log(err));
   },
 
+  getSortAllNeeds: (callback) => {
+    let allNeeds = {
+      "physical item": [],
+      "transportation": [],
+      "money": [],
+      "community support": []
+    };
+
+    models.PersonNeed.findAll({
+
+    })
+    .then(needs => {
+      needs.forEach(need => {
+        console.log(need.category)
+        allNeeds[need.category].push(need);
+      });
+
+      callback(allNeeds);
+    });
+  },
+
   addFamily: (family, callback) => {
     return models.family.create({
       lastName: family.lastName,
@@ -84,7 +105,7 @@ module.exports.dbHelpers = {
     });
   },
 
-  associateNeed: (need, personId, callback) => {
+  associateNeed: (need, personId, familyId, callback) => {
     Promise.all([
       models.person.findById(personId),
       models.need.findAll({
@@ -92,9 +113,12 @@ module.exports.dbHelpers = {
           category: need.category,
           type: need.type
         }
-      })    
+      }),
+      models.family.findById(familyId)
     ])
-    .spread((person, savedNeed) => {
+    .spread((person, savedNeed, family) => {
+      console.log(family.dataValues.lastName)
+      
       return models.PersonNeed.create({
         claimed: false,
         fulfilled: false,
@@ -102,7 +126,8 @@ module.exports.dbHelpers = {
         needId: savedNeed[0].dataValues.id,
         personId: person.id,
         type: savedNeed[0].dataValues.type,
-        category: savedNeed[0].dataValues.category
+        category: savedNeed[0].dataValues.category,
+        lastName: family.dataValues.lastName
       })
     })
     .then((PersonNeed) => callback(PersonNeed))

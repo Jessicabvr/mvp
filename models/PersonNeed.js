@@ -22,6 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     category: {
       type: DataTypes.STRING
+    },
+    lastName: {
+      type: DataTypes.STRING
     }
   });
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 class RegisterFamily extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class RegisterFamily extends React.Component {
     this.handleLastName = this.handleLastName.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.reRoute = this.reRoute.bind(this);
   }
 
   handleLastName(e) {
@@ -36,10 +37,15 @@ class RegisterFamily extends React.Component {
         email: this.state.email
       }     
     })
-    .then(family => {
-      this.props.update(family.id);
-      this.setState({ lastName: '', email: ''})
-    });
+    .then(response => {
+      this.props.update(response.data.id);
+      this.setState({ lastName: '', email: ''}, () => this.reRoute(response.data.id))
+    })
+    .catch(err => console.log(err));
+  }
+
+  reRoute(familyId) {
+    this.props.history.push(`/current/${familyId}`)
   }
 
   render () {
@@ -66,4 +72,4 @@ class RegisterFamily extends React.Component {
   }
 }
 
-export default RegisterFamily;
+export default withRouter(RegisterFamily);

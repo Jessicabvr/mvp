@@ -47,6 +47,22 @@ module.exports = {
       {
         lastName: 'Arroyo',
         email: 'test11@test.com' 
+      },
+      {
+        lastName: 'Van Ness',
+        email: 'test12@test.com' 
+      },
+      {
+        lastName: 'Dancy',
+        email: 'test13@test.com' 
+      },
+      {
+        lastName: 'Cabeal',
+        email: 'test14@test.com' 
+      },
+      {
+        lastName: 'Peterson',
+        email: 'test15@test.com' 
       }], {});
     
   },

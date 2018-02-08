@@ -24,9 +24,16 @@ router.get('/families/:familyId/members/:memberId', (req, res) => {
   db.dbHelpers.getFamilyMember(req.params.familyId, req.params.memberId, (person => res.send(person)));
 });
 
+router.get('/needs/all', (req, res) => {
+  db.dbHelpers.getSortAllNeeds((needs) => res.send(needs));
+});
+
 //add a new family to the database
 router.post('/families', (req, res) => {
-  db.dbHelpers.addFamily(req.body.family, (family => res.send(family))); 
+  db.dbHelpers.addFamily(req.body.family, (family => {
+    console.log(family);
+    res.send(family);
+  })); 
 });
 
 //add a family member to a family already in the databae
@@ -36,7 +43,7 @@ router.post('/families/:id', (req, res) => {
 
 //associate a new need to a member
 router.post('/families/:familyId/members/:memberId/needs', (req, res) => {
-  db.dbHelpers.associateNeed(req.body.need, req.params.memberId, ((need) => res.send(need)));
+  db.dbHelpers.associateNeed(req.body.need, req.params.memberId, req.params.familyId, ((need) => res.send(need)));
 });
 
 //prevent the front end from sending requests on refresh

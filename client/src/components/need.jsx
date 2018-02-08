@@ -9,7 +9,7 @@ class Need extends React.Component {
     let claimed = this.props.need.claimed === true ? 'claimed' : 'unclaimed';
     let fulfilled = this.props.need.fulfilled === true ? 'met' : 'unmet';
     let claimedStyle = "badge badge-dark bg-beaver";
-    let unclaimedStyle = "badge badge-dark bg-rose";
+    let unclaimedStyle = "badge badge-dark bg-yellow";
     
  
     return (

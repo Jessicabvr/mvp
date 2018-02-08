@@ -82,7 +82,7 @@ class AddNeed extends React.Component {
       }     
     })
     .then(() => {
-      this.setState({selecteDescription: ''});
+      this.setState({selectedDescription: ''});
       this.props.update(this.props.person.familyId, null);
     });  
   }
@@ -107,6 +107,7 @@ class AddNeed extends React.Component {
             <option>type</option>
             {this.setTypes(this.state.offeredTypes)}
           </select>
+          <hr></hr>
           
           Description:
           <input value={this.state.selectedDescription} onChange={(e) => this.handleDescription(e)} id="description-select" className="description" name="description"></input>

@@ -50,7 +50,7 @@ class AddFamilyMember extends React.Component {
       member: { firstName, lastName, gender }  
     })
     .then((member) => {
-      this.props.update(familyId, () => this.props.add(familyId));
+      this.props.update(familyId, () => this.props.addFamily(familyId));
     })
     .catch(err => console.log(err));
   }
