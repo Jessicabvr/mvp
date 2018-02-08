@@ -2,6 +2,8 @@ import React from 'react';
 import Need from './need.jsx';
 import NoNeed from './noNeed.jsx';
 import AddNeed from './addNeed.jsx';
+import { CSSTransitionGroup } from 'react-transition-group';
+
 
 class FamilyMember extends React.Component {
   constructor(props) {
@@ -29,9 +31,14 @@ class FamilyMember extends React.Component {
       return (
         <div className="familyMemberDetail">
           <h4 className="fullName">{this.props.person.firstName + ' ' + this.props.person.lastName}</h4>       
-          <ul className="list-group">           
+          <ul className="list-group">  
+          <CSSTransitionGroup
+            transitionName="fade"
+            transitionEnterTimeout={1000}
+            transitionLeaveTimeout={300}>
             {this.props.person.needs.map(need => <Need key={need.id} need={need} />)}
             <AddNeed add={this.props.addNeed} update={this.props.update} person={this.props.person} />
+          </CSSTransitionGroup>                     
           </ul>
         </div>
     )} else {
