@@ -5,8 +5,6 @@ import AddFamilyMember from './addFamilyMember.jsx';
 class FamilyMemberList extends React.Component {
   constructor(props) {
     super(props);
-
-    this.props.sort(props.family.members);
   }
 
   render() {

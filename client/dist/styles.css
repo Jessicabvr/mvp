@@ -3,7 +3,7 @@ h1 {
 }
 
 body {
-  
+  padding-bottom: 3em;
    
 }
 
@@ -13,6 +13,10 @@ select {
 
 input {
   margin-right: 1em;
+}
+
+h4 {
+  margin-bottom: 1em;
 }
 
 .dropdownLink {

@@ -60,6 +60,7 @@ class AddFamilyMember extends React.Component {
         <li className="list-group-item addFamilyMember">
           <form>
             <h2 className="text-center">{this.props.family.lastName} Family</h2>
+            <h4>Add Family Member: </h4>
             First: <input value={this.state.firstName} onChange={ (e) => this.handleFirstName(e) } id="addFirstName" name="addFirstName"></input>
             Last: <input value={this.state.lastName} onChange={ (e) => this.handleLastName(e) }  id="addLastName" name="addLastName"></input>
             Gender: <input value={this.state.gender} onChange={ (e) => this.handleGender(e) }  id="addGender" name="addGender"></input>
